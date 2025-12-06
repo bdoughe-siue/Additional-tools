@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Techniques Flashcards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            height: 400px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background: white;
+        }
+
+        .card-front {
+            background: white;
+        }
+
+        .card-back {
+            background: white;
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+            padding: 25px;
+        }
+
+        .card-front h2 {
+            font-size: 1.8em;
+            color: #667eea;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .card-front .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .card-back h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .card-back ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .card-back li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .card-back li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .instruction {
+            text-align: center;
+            color: white;
+            font-size: 1.1em;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agile Techniques Reference Guide</h1>
+        
+        <div class="cards-grid">
+            <!-- User Stories Card -->
+            <div class="card-container">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front">
+                        <div class="icon">📝</div>
+                        <h2>User Stories</h2>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>User Stories</h3>
+                        <ul>
+                            <li>Written from user's perspective</li>
+                            <li>Format: "As a [role], I want [feature], so that [benefit]"</li>
+                            <li>INVEST criteria: Independent, Negotiable, Valuable, Estimable, Small, Testable</li>
+                            <li>Include acceptance criteria</li>
+                            <li>Facilitates conversation between team and stakeholders</li>
+                            <li>Kept simple and concise</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story Mapping Card -->
+            <div class="card-container">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front">
+                        <div class="icon">🗺️</div>
+                        <h2>Story Mapping</h2>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Story Mapping</h3>
+                        <ul>
+                            <li>Visual representation of user journey</li>
+                            <li>Horizontal axis shows user activities in sequence</li>
+                            <li>Vertical axis shows priority (top = highest)</li>
+                            <li>Helps identify MVP and releases</li>
+                            <li>Shows gaps in functionality</li>
+                            <li>Enables whole team collaboration</li>
+                            <li>Creates shared understanding</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Planning Poker Card -->
+            <div class="card-container">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front">
+                        <div class="icon">🃏</div>
+                        <h2>Planning Poker</h2>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Planning Poker</h3>
+                        <ul>
+                            <li>Consensus-based estimation technique</li>
+                            <li>Uses Fibonacci sequence (1, 2, 3, 5, 8, 13, 21...)</li>
+                            <li>Team members vote simultaneously</li>
+                            <li>Prevents anchoring bias</li>
+                            <li>Encourages discussion on outliers</li>
+                            <li>Estimates relative complexity, not time</li>
+                            <li>Builds team alignment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- T-Shirt Sizing Card -->
+            <div class="card-container">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front">
+                        <div class="icon">👕</div>
+                        <h2>T-Shirt Sizing</h2>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>T-Shirt Sizing</h3>
+                        <ul>
+                            <li>Simple estimation: XS, S, M, L, XL, XXL</li>
+                            <li>Quick and intuitive approach</li>
+                            <li>Great for early-stage estimation</li>
+                            <li>Useful for product backlog refinement</li>
+                            <li>Less precise than story points</li>
+                            <li>Easy for stakeholders to understand</li>
+                            <li>Can convert to story points later</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="instruction">💡 Click any card to flip and see details</p>
+    </div>
+</body>
+</html>
